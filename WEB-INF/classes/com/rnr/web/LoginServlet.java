@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * 
@@ -34,17 +35,21 @@ public class LoginServlet extends HttpServlet{
 			throws ServletException, IOException {
 		
 		response.setContentType("text/html");
+
                 HttpSession session=request.getSession();
-                if(!session.isNew()){
-                    response.sendRedirect("success.jsp");
-                }	
+               // if(!session.isNew()){
+                 //   response.sendRedirect("success.jsp");
+                //}	
+
 		try {
 			//get the user entered input values from the "HttpServletRequest" object, i.e request 
 			String userNameStr =  request.getParameter("usernameTB");
 			String passwordStr =  request.getParameter("passwordTB");
-			session.setAttribute("user",userNameStr);
+			
                         Log loglog=new Log();			
-			if(loglog.isValidPassword(userNameStr,passwordStr)){
+			
+                        if(loglog.isValidPassword(userNameStr,passwordStr)){
+                                session.setAttribute("user",userNameStr);
 				response.sendRedirect("success.jsp");
 			}else{
 				request.setAttribute("errMsg", "invalid login, check your username&password");
