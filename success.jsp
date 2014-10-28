@@ -9,7 +9,7 @@
 <body>
 
 	<%
-		String user = (String) request.getAttribute("reqName");
+		String user = (String) session.getAttribute("user");
 	%>
 
 	<h1>

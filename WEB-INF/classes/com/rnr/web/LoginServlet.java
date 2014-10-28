@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * 
- * @author rnr
+ * @author dmlaomao
  *
  *LoginServlet inherits all the features of a servlet by extending HttpServlet.
  *By default the doPost method will be called by the webContainer.
@@ -34,16 +34,18 @@ public class LoginServlet extends HttpServlet{
 			throws ServletException, IOException {
 		
 		response.setContentType("text/html");
-	
+                HttpSession session=request.getSession();
+                if(!session.isNew()){
+                    response.sendRedirect("success.jsp");
+                }	
 		try {
 			//get the user entered input values from the "HttpServletRequest" object, i.e request 
 			String userNameStr =  request.getParameter("usernameTB");
 			String passwordStr =  request.getParameter("passwordTB");
-			
+			session.setAttribute("user",userNameStr);
                         Log loglog=new Log();			
 			if(loglog.isValidPassword(userNameStr,passwordStr)){
-				request.setAttribute("reqName", userNameStr);
-				request.getRequestDispatcher("success.jsp").forward(request, response);
+				response.sendRedirect("success.jsp");
 			}else{
 				request.setAttribute("errMsg", "invalid login, check your username&password");
 				request.getRequestDispatcher("login.jsp").forward(request, response);
