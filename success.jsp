@@ -5,6 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Servlet JSP Success</title>
+        <link rel="stylesheet" href="/uikit/css/uikit.min.css" />
+        <script src="/uikit/js/jquery-1.11.1.js"></script>
+        <script src="/uikit/js/uikit.min.js"></script>
 </head>
 <body>
 
@@ -12,7 +15,7 @@
 		String user = (String) session.getAttribute("user");
 	%>
 
-	<h1>
+	<h1 align="center">
 		Hello welcome
 		<%=user%>
 		to the website
