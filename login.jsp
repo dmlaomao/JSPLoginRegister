@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,8 +11,8 @@
         <script src="/uikit/js/jquery-1.11.1.js"></script>
         <script src="/uikit/js/uikit.min.js"></script>
 </head>
-<body>
-	<h1 align="center">This is a Servlet JSP Loin page</h1>
+<body background="indexwallpaper.jpg" height="100%" width="100%">
+	<h1 align="center">This is a Login page</h1>
 	<form action="login.htm" method="post" class="uk-form">
 		<table align="center">
 			<tr>
@@ -37,8 +36,12 @@
 				</td>
 			</tr>
 			<tr>
-				<td><input name="register" value="注册" type="submit"></td>
+				<td><input name="register" value="register" type="button" onclick="window.open('register.jsp')"></td>
 				<td><input name="login" value="login" type="submit"></td>
+			</tr>
+			<tr>
+				<td style="height:720px"></td>
+
 			</tr>
 		</table>
 	</form>

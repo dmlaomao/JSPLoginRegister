@@ -37,18 +37,17 @@ public class LoginServlet extends HttpServlet{
 		response.setContentType("text/html");
 
                 HttpSession session=request.getSession();
-                if(!session.isNew()){
-                    response.sendRedirect("success.jsp");
-                }	
                
-	        else{try {
+	        try {
 			//get the user entered input values from the "HttpServletRequest" object, i.e request 
 			String userNameStr =  request.getParameter("usernameTB");
 			String passwordStr =  request.getParameter("passwordTB");
 			
-                        Log loglog=new Log();			
-			
-                        if(loglog.isValidPassword(userNameStr,passwordStr)){
+                        UserInfo user=new UserInfo();
+			user.setName(userNameStr);
+                        user.setPassword(passwordStr);
+
+                        if(user.verifypassword(userNameStr,passwordStr)){
                                 session.setAttribute("user",userNameStr);
 				response.sendRedirect("success.jsp");
 			}else{
@@ -59,7 +58,7 @@ public class LoginServlet extends HttpServlet{
 		}catch(Exception e){
 			request.setAttribute("errMsg", e.getMessage());
 			request.getRequestDispatcher("login.jsp").forward(request, response);
-		 }
+		 
                 }
 	}
 }

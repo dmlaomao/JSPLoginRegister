@@ -22,10 +22,19 @@
 			<param-value>Simple Servlets HTML Login project</param-value>
 		</init-param>
 	</servlet>
-
 	<servlet-mapping>
 		<servlet-name>loginServlet</servlet-name>
-		<url-pattern>/logintest</url-pattern>
+		<url-pattern>/login.htm</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>registerServlet</servlet-name>
+		<servlet-class>com.rnr.web.registerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>registerServlet</servlet-name>
+		<url-pattern>/register.htm</url-pattern>
+	</servlet-mapping>
+
 
 </web-app>

@@ -16,9 +16,38 @@
 	%>
 
 	<h1 align="center">
-		Hello welcome
-		<%=user%>
-		to the website
+		Welcome
+		<%=user%>!
+		</br>
+             now you can type two keywords to search bbs.byr.cn
 	</h1>
+	<form action="search" method="post" class="uk-form">
+		<table align="center">
+			<tr>
+				<td>username:</td>
+				<td><input name="keyword1" type="text"></td>
+			</tr>
+			<tr>
+				<td>password:</td>
+				<td><input name="keyword2" type="text"></td>
+			</tr>
+			<tr style="color: red">
+				<td colspan="2">
+					<%
+						String errorMessage = (String) request.getAttribute("errMsg");
+						if (errorMessage != null) {
+					%> 
+                                        <%=errorMessage%> 
+                                        <%
+ 	                                    }
+                                        %>
+				</td>
+			</tr>
+			<tr>
+				<td><input name="register" value="注册" type="submit"></td>
+				<td><input name="login" value="login" type="submit"></td>
+			</tr>
+		</table>
+	</form>
 </body>
 </html>
