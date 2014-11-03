@@ -49,11 +49,13 @@ public class Log{
 		return passwordFromDB;
 	}
 
-	public String writeUserinfo(String username,String password) {
+	public void writeUserinfo(String username,String password) {
 		try {
 			conn = getDBConnection(); //get the data base connection object
-			String sql = "INSERT INTO userinfo VALUES(username, password)";
+			String sql = "INSERT INTO userinfo(USER_NAME,USER_PASSWORD) VALUES(?,?)";
 			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, username);
+			stmt.setString(2, password);
 			stmt.executeUpdate();
 			conn.close(); //close the database connection
 		} catch (Exception e) {
@@ -73,31 +75,32 @@ public class Log{
         
         public boolean isValidName(String UserName) {
 		try{
-                conn=getDBconnection();
-               	String sql = "SELECT USER_NAME FROM userinfo";
-		stmt = conn.prepareStatement(sql);
-		ResultSet res = stmt.executeQuery();
-		while (res.next()) {
-			if(UserName.equals(res.getString("USER_PASSWORD")))
-                               return false;
-		}
-                res.close();
-         	conn.close(); //close the database connection
-		return true;
+                    conn=getDBConnection();
+               	    String sql = "SELECT USER_NAME FROM userinfo";
+		    stmt = conn.prepareStatement(sql);
+		    ResultSet res = stmt.executeQuery();
+		    while (res.next()) {
+			    if(UserName.equals(res.getString("USER_NAME")))
+                                   return false;
+		    }
+                    res.close();
+         	    conn.close(); //close the database connection
+		    return true;
                 } catch (Exception e) {
-			throw new SQLException(e.getMessage());
+			e.printStackTrace();
                 }
+                return false;
 	}
 
 	public Connection getDBConnection() throws SQLException {
 		try {
-			//loadDbProperties();
 			Class.forName(driver);
 			conn = DriverManager.getConnection(url, userName, password);
 			//give back the database connection object to the caller
 			return conn;
 		} catch (Exception e) {
-			throw new SQLException(e.getMessage());
+			e.printStackTrace();
 		}
+                return null;
 	}
 }

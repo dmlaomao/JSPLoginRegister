@@ -29,7 +29,7 @@
 
 	<servlet>
 		<servlet-name>RegisterServlet</servlet-name>
-		<servlet-class>com.rnr.web.registerServlet</servlet-class>
+		<servlet-class>com.rnr.web.RegisterServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>RegisterServlet</servlet-name>

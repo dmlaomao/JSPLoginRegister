@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet{
 			user.setName(userNameStr);
                         user.setPassword(passwordStr);
 
-                        if(user.verifypassword(userNameStr,passwordStr)){
+                        if(user.verifypassword()){
                                 session.setAttribute("user",userNameStr);
 				response.sendRedirect("success.jsp");
 			}else{

@@ -43,9 +43,11 @@ public class LoginServlet extends HttpServlet{
 			String userNameStr =  request.getParameter("usernameTB");
 			String passwordStr =  request.getParameter("passwordTB");
 			
-                        Log loglog=new Log();			
-			
-                        if(loglog.isValidPassword(userNameStr,passwordStr)){
+                        UserInfo user=new UserInfo();
+			user.setName(userNameStr);
+                        user.setPassword(passwordStr);
+
+                        if(user.verifypassword(userNameStr,passwordStr)){
                                 session.setAttribute("user",userNameStr);
 				response.sendRedirect("success.jsp");
 			}else{
