@@ -1,0 +1,31 @@
+package com.rnr.model;
+
+public class UserInfo{
+    private String name;
+    private String password;
+    private String mail;
+
+    public void setName(String name){
+        this.name=name;
+    }
+    
+    public String getName(){
+        return name;
+    }
+
+    public void setName(String name){
+        this.name=name;
+    }
+    
+    public String getName(){
+        return name;
+    }
+
+    public boolean checkavailibility(){
+        return isValidName(name);
+    }
+
+    public boolean verifypassword(){
+        return isValidPassword(name);
+    }
+}
